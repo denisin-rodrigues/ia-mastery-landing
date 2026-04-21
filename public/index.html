@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Mastery — O Fim do Dev Solitário</title>
+    <title>IA Mastery — O Ecossistema Definitivo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -18,12 +18,12 @@
             color: white;
             font-family: 'Satoshi', sans-serif;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         .font-display { font-family: 'Anton', sans-serif; }
         .text-neon { color: var(--color-primary); }
         .bg-neon { background-color: var(--color-primary); }
         
-        /* Magic UI: Rainbow Button */
         .rainbow-button {
             position: relative;
             padding: 1.25rem 2.5rem;
@@ -35,6 +35,7 @@
             border-radius: 12px;
             overflow: hidden;
             z-index: 1;
+            display: inline-block;
         }
         .rainbow-button::before {
             content: "";
@@ -48,177 +49,221 @@
         }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* Magic UI: Orbiting Circles */
-        .orbit-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .orbit-circle {
-            position: absolute;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 50%;
-            animation: orbit-spin linear infinite;
-        }
-        .orbit-item {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: #000;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: var(--color-primary);
-        }
-        @keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        /* Magic UI: Terminal */
-        .terminal {
-            background: #050505;
-            border: 1px solid #1a1a1a;
-            border-radius: 12px;
-            padding: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-        .terminal-header {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 15px;
-        }
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .typing { border-right: 2px solid var(--color-primary); animation: blink 1s infinite; white-space: nowrap; overflow: hidden; }
-        @keyframes blink { 50% { border-color: transparent; } }
-
         .bento-card { background: #0A0A0A; border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 32px; transition: all 0.3s ease; }
         .bento-card:hover { border-color: var(--color-primary); transform: translateY(-5px); box-shadow: 0 10px 40px -10px rgba(209, 255, 0, 0.2); }
 
-        .pricing-card {
-            background: #000;
-            border: 2px solid var(--color-primary);
-            box-shadow: 0 0 50px -10px rgba(209, 255, 0, 0.4);
-        }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 24px 0; cursor: pointer; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; opacity: 0; }
+        .faq-item.active .faq-answer { max-height: 200px; opacity: 1; margin-top: 16px; }
+
+        .orbit-container { position: relative; display: flex; align-items: center; justify-content: center; }
+        .orbit-circle { position: absolute; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; animation: orbit-spin linear infinite; }
+        .orbit-item { position: absolute; width: 40px; height: 40px; background: #000; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--color-primary); }
+        @keyframes orbit-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .terminal { background: #050505; border: 1px solid #1a1a1a; border-radius: 12px; padding: 20px; font-family: 'Courier New', monospace; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .typing { border-right: 2px solid var(--color-primary); animation: blink 1s infinite; white-space: nowrap; overflow: hidden; }
+        @keyframes blink { 50% { border-color: transparent; } }
     </style>
 </head>
 <body>
     <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5 px-6 md:px-12 py-4 flex justify-between items-center">
         <div class="font-display text-2xl tracking-tighter text-neon">IA MASTERY</div>
-        <button class="bg-neon text-black px-6 py-2 rounded-lg font-bold text-sm uppercase tracking-tighter hover:scale-105 transition-transform">Get Access</button>
+        <a href="#preço" class="bg-neon text-black px-6 py-2 rounded-lg font-bold text-sm uppercase tracking-tighter hover:scale-105 transition-transform">Garantir Vaga</a>
     </nav>
 
-    <!-- Hero with Orbiting Circles -->
-    <section class="pt-40 pb-20 px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center min-h-[100vh]">
-        <div class="relative z-10">
-            <span class="inline-block px-4 py-1 border border-neon text-neon text-xs font-bold rounded-full mb-6 uppercase tracking-widest">A Nova Era da Engenharia</span>
-            <h1 class="font-display text-7xl md:text-9xl leading-[0.85] mb-8 uppercase tracking-tighter">
-                SQUAD <br> <span class="text-neon">COMMAND.</span>
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center min-h-[90vh]">
+        <div>
+            <span class="inline-block px-4 py-1 border border-neon text-neon text-xs font-bold rounded-full mb-6 uppercase tracking-widest">O Fim da Era do Dev Solitário</span>
+            <h1 class="font-display text-7xl md:text-9xl leading-[0.85] mb-8 uppercase tracking-tighter text-neon">
+                SQUAD <br> COMMAND.
             </h1>
-            <p class="text-xl opacity-60 max-w-lg mb-10 leading-relaxed font-light">
-                O fim dos devs solitários. Aprenda a orquestrar agentes e criar squads que executam em 1 shot.
+            <p class="text-xl opacity-60 max-w-lg mb-10 leading-relaxed">
+                Aprenda a orquestrar times de agentes e criar sistemas de IA com precisão 10x. Saia do tutorial hell e assuma o comando.
             </p>
-            <button class="rainbow-button">Garantir Acesso de Elite</button>
+            <a href="#preço" class="rainbow-button">Quero Entrar na Elite</a>
         </div>
-        <div class="relative orbit-container h-[500px]">
-            <img src="assets/images/masterskill_shard_hero.png" alt="MasterSkill" class="w-64 h-64 object-contain z-10 relative">
-            <div class="orbit-circle w-[300px] h-[300px]" style="animation-duration: 20s;">
-                <div class="orbit-item" style="top: 0; left: 50%; transform: translateX(-50%);">NODE</div>
-                <div class="orbit-item" style="bottom: 0; left: 50%; transform: translateX(-50%);">PY</div>
+        <div class="relative orbit-container h-[400px]">
+            <img src="assets/images/masterskill_shard_hero.png" alt="MasterSkill" class="w-64 h-64 object-contain z-10">
+            <div class="orbit-circle w-[280px] h-[280px]" style="animation-duration: 15s;"><div class="orbit-item" style="top:0;left:50%;transform:translateX(-50%)">NODE</div></div>
+            <div class="orbit-circle w-[380px] h-[380px]" style="animation-duration: 25s; animation-direction:reverse;"><div class="orbit-item" style="left:0;top:50%;transform:translateY(-50%)">DOCKER</div></div>
+        </div>
+    </section>
+
+    <!-- Benefícios Comprovados -->
+    <section class="py-32 px-6 md:px-12 border-y border-white/5 bg-zinc-950">
+        <div class="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            <div class="text-center">
+                <div class="text-neon font-display text-5xl mb-2">10X</div>
+                <p class="text-xs opacity-40 uppercase tracking-widest">Mais Velocidade de Entrega</p>
             </div>
-            <div class="orbit-circle w-[450px] h-[450px]" style="animation-duration: 30s; animation-direction: reverse;">
-                <div class="orbit-item" style="left: 0; top: 50%; transform: translateY(-50%);">DOCKER</div>
-                <div class="orbit-item" style="right: 0; top: 50%; transform: translateY(-50%);">GIT</div>
+            <div class="text-center">
+                <div class="text-neon font-display text-5xl mb-2">0%</div>
+                <p class="text-xs opacity-40 uppercase tracking-widest">Dependência de Equipes Grandes</p>
+            </div>
+            <div class="text-center">
+                <div class="text-neon font-display text-5xl mb-2">R$ 0</div>
+                <p class="text-xs opacity-40 uppercase tracking-widest">Gasto com Copywriters Humanos</p>
+            </div>
+            <div class="text-center">
+                <div class="text-neon font-display text-5xl mb-2">24/7</div>
+                <p class="text-xs opacity-40 uppercase tracking-widest">Seus Agentes Trabalhando</p>
             </div>
         </div>
     </section>
 
-    <!-- Scroll Velocity Marquee -->
-    <div class="bg-neon text-black py-6 overflow-hidden flex whitespace-nowrap font-display text-4xl tracking-tighter uppercase border-y-2 border-black">
-        <div id="velocity-marquee" class="flex gap-12">
-            <span>O FIM DO DEV SOLITÁRIO • PRECISÃO 10X • SQUAD ENGINEERING • O FIM DO DEV SOLITÁRIO • PRECISÃO 10X • SQUAD ENGINEERING •&nbsp;</span>
-        </div>
-    </div>
-
-    <!-- Terminal Section -->
-    <section class="py-32 px-6 md:px-24 bg-black">
+    <!-- Manifesto Black -->
+    <section class="bg-black py-32 px-6 md:px-24">
         <div class="max-w-4xl mx-auto">
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="dot bg-red-500"></div>
-                    <div class="dot bg-yellow-500"></div>
-                    <div class="dot bg-green-500"></div>
-                    <span class="ml-4 text-[10px] opacity-40 text-white font-sans uppercase tracking-widest">opensquad --bash</span>
-                </div>
-                <div class="text-sm text-zinc-300 leading-relaxed">
-                    <div class="mb-2"><span class="text-neon">$</span> npx opensquad init --elite</div>
-                    <div class="mb-2 text-zinc-500">✔ Preflight checks...</div>
-                    <div class="mb-2 text-zinc-500">✔ Activating MasterSkill [Power: 10x]</div>
-                    <div class="mb-2"><span class="text-neon">$</span> opensquad create-squad "IA Mastery"</div>
-                    <div class="text-neon typing" id="terminal-typing">Iniciando o fim da era solitária...</div>
+            <div class="terminal mb-12">
+                <div class="flex gap-2 mb-4"><div class="w-3 h-3 bg-red-500 rounded-full"></div><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><div class="w-3 h-3 bg-green-500 rounded-full"></div></div>
+                <div class="text-sm font-mono opacity-80">
+                    <div>$ npx opensquad init --force-elite</div>
+                    <div class="text-neon">✔ Ativando MasterSkill...</div>
+                    <div class="typing mt-2" id="terminal-typing">Iniciando protocolo de comando de squad...</div>
                 </div>
             </div>
-            <div class="mt-20 text-center">
-                <h2 class="font-display text-6xl mb-8 uppercase">A CULPA NÃO É SUA.</h2>
-                <p class="text-xl opacity-60">Você só estava usando as ferramentas erradas. Bem-vindo ao próximo nível.</p>
+            <h2 class="font-display text-6xl md:text-8xl mb-8 uppercase leading-none">VOCÊ ESTÁ <span class="text-neon">ESTAGNADO?</span></h2>
+            <p class="text-xl md:text-2xl opacity-60 leading-relaxed mb-12">
+                A era do dev solitário acabou. Se você ainda está perdendo noites tentando resolver bugs básicos enquanto o mundo usa IA para criar impérios, você já está obsoleto.
+            </p>
+        </div>
+    </section>
+
+    <!-- Apresentação Autor (White Contrast) -->
+    <section class="bg-white text-black py-32 px-6 md:px-24">
+        <div class="grid md:grid-cols-2 gap-24 items-center">
+            <div class="aspect-square bg-zinc-200 rounded-3xl overflow-hidden flex items-center justify-center font-display text-4xl opacity-20">DENILSON (ADS)</div>
+            <div>
+                <span class="text-black/40 font-bold text-xs uppercase tracking-widest block mb-4">O Criador do Método</span>
+                <h2 class="font-display text-6xl mb-8 uppercase">ESTUDANTE DE ADS, <br>ARQUITETO DE IA.</h2>
+                <p class="text-xl leading-relaxed mb-8">
+                    Eu cansei de ver meus colegas de faculdade perdidos em fundamentos que a IA já faz em segundos. Decidi criar o <b>IA Mastery</b> para ensinar o que as empresas de elite realmente buscam: alguém que saiba comandar a tecnologia, não apenas usá-la.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Bento Grid with File Tree -->
+    <!-- Para quem é? -->
+    <section class="py-32 px-6 md:px-12 bg-black border-y border-white/5">
+        <div class="text-center mb-16">
+            <h2 class="font-display text-6xl uppercase">PARA QUEM É?</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="bento-card border-neon/20">
+                <h3 class="font-display text-2xl mb-4 uppercase text-neon">DEV PERDIDO</h3>
+                <p class="opacity-60">Para quem faz ADS ou Engenharia e não sabe como usar a IA para acelerar a carreira de verdade.</p>
+            </div>
+            <div class="bento-card border-neon/20">
+                <h3 class="font-display text-2xl mb-4 uppercase text-neon">CREATORS</h3>
+                <p class="opacity-60">Para quem quer automatizar a criação de conteúdo e focar apenas na estratégia e no lucro.</p>
+            </div>
+            <div class="bento-card border-neon/20">
+                <h3 class="font-display text-2xl mb-4 uppercase text-neon">FREELANCERS</h3>
+                <p class="opacity-60">Para quem quer entregar projetos 10x mais rápido e cobrar 5x mais por ser um "AI Expert".</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap (Módulos) -->
     <section class="py-32 px-6 md:px-12 bg-black">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            <div class="bento-card md:col-span-2 flex flex-col justify-between">
-                <div>
-                    <span class="text-neon font-black text-xs uppercase tracking-widest">Módulo 01</span>
-                    <h3 class="font-display text-4xl mt-4 mb-6 uppercase">ESTRUTURA <br>DO PROJETO</h3>
-                    <div class="bg-black/40 border border-white/5 p-6 rounded-xl font-mono text-xs text-zinc-400">
-                        <div class="mb-2">📂 src</div>
-                        <div class="ml-4 mb-2">📂 agents</div>
-                        <div class="ml-8 mb-2">📄 estrategista.agent.md</div>
-                        <div class="ml-8 mb-2">📄 dev.agent.md</div>
-                        <div class="ml-4 mb-2">📂 skills</div>
-                        <div class="ml-8 mb-2">📄 masterskill.md</div>
-                        <div class="mb-2">📄 squad.yaml</div>
-                    </div>
-                </div>
+        <div class="text-center mb-20">
+            <h2 class="font-display text-6xl md:text-8xl uppercase mb-4">O <span class="text-neon">ROADMAP.</span></h2>
+            <p class="opacity-40 uppercase tracking-widest text-sm">O Caminho do Comando</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
+            <div class="bento-card md:col-span-2">
+                <span class="text-neon font-bold text-xs">MÓDULO 01</span>
+                <h3 class="font-display text-3xl mt-4 mb-4 uppercase">SETUP ELITE & DOCKER</h3>
+                <p class="opacity-60 text-sm">Configuração profissional de Node, Python e Docker Compose + Ativação da MasterSkill.</p>
             </div>
             <div class="bento-card">
-                <span class="text-neon font-black text-xs uppercase tracking-widest">Módulo 02</span>
-                <h3 class="font-display text-3xl mt-4 uppercase">COMMAND <br>DOCKER</h3>
+                <span class="text-neon font-bold text-xs">MÓDULO 02</span>
+                <h3 class="font-display text-2xl mt-4 uppercase">ANATOMIA MCP</h3>
             </div>
             <div class="bento-card">
-                <span class="text-neon font-black text-xs uppercase tracking-widest">Módulo 03</span>
-                <h3 class="font-display text-3xl mt-4 uppercase">SHOPIFY <br>API</h3>
+                <span class="text-neon font-bold text-xs">MÓDULO 03</span>
+                <h3 class="font-display text-2xl mt-4 uppercase">SHOPIFY API</h3>
             </div>
             <div class="bento-card md:col-span-2">
-                <span class="text-neon font-black text-xs uppercase tracking-widest">Módulo 04</span>
-                <h3 class="font-display text-4xl mt-4 uppercase text-neon">OPENSQUAD PRO</h3>
-                <p class="opacity-60 mt-4">Orquestração de times reais.</p>
+                <span class="text-neon font-bold text-xs">MÓDULO 04</span>
+                <h3 class="font-display text-4xl mt-4 uppercase">OPENSQUAD PRO</h3>
+                <p class="opacity-60 mt-4">Orquestração de times reais de agentes.</p>
+            </div>
+            <div class="bento-card md:col-span-2">
+                <span class="text-neon font-bold text-xs">BÔNUS</span>
+                <h3 class="font-display text-4xl mt-4 uppercase text-neon">PACK DE TEMPLATES</h3>
+                <p class="opacity-60 mt-4">As LPs mais lucrativas prontas para deploy.</p>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Card Section -->
-    <section class="py-64 bg-black px-6 flex flex-col items-center justify-center">
-        <div class="pricing-card w-full max-w-xl rounded-[3rem] p-12 text-center relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-neon shadow-[0_0_20px_rgba(209,255,0,1)]"></div>
-            <span class="text-neon font-black text-sm uppercase tracking-widest">Acesso Vitalício</span>
-            <h2 class="font-display text-7xl mt-6 mb-2 uppercase">IA MASTERY</h2>
-            <div class="text-zinc-500 line-through text-2xl mb-4 uppercase tracking-tighter">De R$ 997,00 por apenas</div>
-            <div class="text-neon font-black text-8xl mb-8 tracking-tighter">12x R$ 49,90</div>
-            <ul class="text-left space-y-4 mb-12 opacity-80 max-w-xs mx-auto">
-                <li class="flex items-center gap-3">✅ 7 Módulos de Engenharia de IA</li>
-                <li class="flex items-center gap-3">✅ Acesso ao Framework Antigravity</li>
-                <li class="flex items-center gap-3">✅ Biblioteca de Agentes Prontos</li>
-                <li class="flex items-center gap-3">✅ Comunidade de Elite</li>
+    <!-- Depoimentos (Placeholder) -->
+    <section class="py-32 px-6 md:px-12 bg-zinc-950">
+        <div class="text-center mb-16">
+            <h2 class="font-display text-6xl uppercase">O QUE DIZEM <span class="text-neon">OS ALUNOS.</span></h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="bg-black p-8 rounded-3xl border border-white/5">
+                <p class="italic opacity-60 mb-6">"Eu estava travado no segundo semestre de ADS. Com o IA Mastery, entendi que a IA não vai me substituir, ela vai me tornar o dono da porra toda."</p>
+                <div class="font-bold text-neon uppercase">Dev S.</div>
+            </div>
+            <div class="bg-black p-8 rounded-3xl border border-white/5">
+                <p class="italic opacity-60 mb-6">"Consegui automatizar toda a copy do meu e-commerce usando o Opensquad. O preço de R$ 97 se pagou no primeiro dia de uso."</p>
+                <div class="font-bold text-neon uppercase">E-commerce Owner</div>
+            </div>
+            <div class="bg-black p-8 rounded-3xl border border-white/5">
+                <p class="italic opacity-60 mb-6">"A MasterSkill é o hack que ninguém te conta. O nível de precisão do código é outro mundo."</p>
+                <div class="font-bold text-neon uppercase">Freelance Dev</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia -->
+    <section class="py-32 bg-black border-y border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="w-32 h-32 bg-neon/10 border border-neon/30 rounded-full flex items-center justify-center mx-auto mb-8">
+                <span class="text-neon font-display text-5xl">7</span>
+            </div>
+            <h2 class="font-display text-6xl mb-6 uppercase">RISCO ZERO.</h2>
+            <p class="text-xl opacity-60">Teste o IA Mastery por 7 dias. Se você não sentir que o seu poder de criação subiu 10 níveis, eu te devolvo cada centavo. Sem perguntas.</p>
+        </div>
+    </section>
+
+    <!-- FAQ (Accordion) -->
+    <section class="py-32 px-6 md:px-24 bg-black">
+        <h2 class="font-display text-6xl mb-16 uppercase text-center">FAQ</h2>
+        <div class="max-w-3xl mx-auto">
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="font-bold uppercase tracking-widest">O curso serve para quem não sabe programar?</div>
+                <div class="faq-answer">Sim! Ensinamos o setup do zero. A IA faz o trabalho pesado, você faz a orquestração estratégica.</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="font-bold uppercase tracking-widest">Quanto tempo eu tenho de acesso?</div>
+                <div class="faq-answer">Acesso vitalício! Todas as atualizações futuras de skills e squads estão inclusas.</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="font-bold uppercase tracking-widest">Preciso de um PC potente?</div>
+                <div class="faq-answer">Não. A maioria das ferramentas roda na nuvem ou exige pouco hardware. Um computador básico com internet já resolve.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="preço" class="py-64 bg-black px-6 flex flex-col items-center justify-center">
+        <div class="bg-black border-2 border-neon w-full max-w-xl rounded-[3rem] p-12 text-center relative shadow-[0_0_50px_rgba(209,255,0,0.3)]">
+            <span class="text-neon font-black text-sm uppercase tracking-widest">Oferta de Lançamento</span>
+            <h2 class="font-display text-8xl mt-6 mb-2 uppercase">R$ 97,00</h2>
+            <div class="text-zinc-500 line-through text-2xl mb-8">De R$ 497,00</div>
+            <ul class="text-left space-y-4 mb-12 opacity-80 max-w-xs mx-auto text-sm">
+                <li>✅ Framework Antigravity + MasterSkill</li>
+                <li>✅ Módulo Completo de Opensquad</li>
+                <li>✅ Automação Social (IG/LinkedIn)</li>
+                <li>✅ Acesso Vitalício + Atualizações</li>
             </ul>
-            <button class="rainbow-button w-full">Garantir minha vaga</button>
-            <p class="mt-6 text-[10px] opacity-40 uppercase tracking-widest">Compra Segura • 7 Dias de Garantia Incondicional</p>
+            <button class="rainbow-button w-full">Comprar Agora</button>
+            <p class="mt-6 text-[10px] opacity-40 uppercase tracking-widest">Compra 100% Segura via Kiwify/Hotmart</p>
         </div>
     </section>
 
